@@ -27,5 +27,14 @@ func handleCreatePaymentIntent(w http.ResponseWriter, r *http.Request) {
 func handleHealth(w http.ResponseWriter, r *http.Request) {
 	// Response must be bytes, so we convert a string to an array ("slice") of bytes
 	var response []byte = []byte("Server is up and running")
-	w.Write(response)
+	
+	// The := operator is a shortcut for inferring var types
+	// the .Write() function returns (int, error), so rather
+	// than use `var theInt int, var err error` we can simply
+	// use `_, err :=`. The first return value is the response
+	// length
+	_, err := w.Write(response)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
