@@ -25,5 +25,7 @@ func handleCreatePaymentIntent(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleHealth(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Ok")
+	// Response must be bytes, so we convert a string to an array ("slice") of bytes
+	var response []byte = []byte("Server is up and running")
+	w.Write(response)
 }
