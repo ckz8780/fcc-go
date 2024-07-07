@@ -21,7 +21,11 @@ func main() {
 }
 
 func handleCreatePaymentIntent(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Endpoint create-payment-intent was called")
+	if r.Method != "POST" {
+		// Convenience http error handlers auto-respond to the request w/ text/status codes
+		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+		return
+	}
 }
 
 func handleHealth(w http.ResponseWriter, r *http.Request) {
