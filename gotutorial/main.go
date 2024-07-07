@@ -3,5 +3,6 @@ package main
 import "gotutorial/testpackage"
 
 func main() {
-	testpackage.MyFunction()
+	var step int = 1
+	testpackage.MyFunction(step)
 }
